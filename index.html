@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -14,32 +14,49 @@
 
         body {
             margin: 0;
-            padding-bottom: 140px;
+            padding-bottom: 150px;
             font-family: Arial, "Meiryo", sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
+            background-color: #080808;
+            color: #eeeeee;
         }
 
         /* 警告ヘッダー */
         header {
-            background-color: #cc0000;
+            background-color: #b00000;
             color: white;
             text-align: center;
             padding: 30px 15px;
-            animation: warningBlink 2s infinite;
+            animation: warningBlink 3s infinite;
         }
 
         header h1 {
             margin: 0;
-            font-size: 28px;
+            font-size: clamp(22px, 4vw, 34px);
+            overflow-wrap: anywhere;
+        }
+
+        header p {
+            margin-bottom: 0;
+            letter-spacing: 2px;
+        }
+
+        header img {
+            display: inline-block;
+            max-width: 200px;
+            max-height: 200px;
+            width: auto;
+            height: auto;
+            margin: 20px 8px 0;
+            border: 2px solid #ff4444;
+            vertical-align: middle;
         }
 
         @keyframes warningBlink {
             0%, 100% {
-                background-color: #cc0000;
+                background-color: #b00000;
             }
             50% {
-                background-color: #660000;
+                background-color: #650000;
             }
         }
 
@@ -52,56 +69,107 @@
 
         /* カウントダウン */
         .countdown-box {
-            background-color: #111;
+            background-color: #151515;
             color: #ff3333;
-            border: 3px solid #ff0000;
-            border-radius: 10px;
+            border: 2px solid #cc0000;
+            border-radius: 4px;
             padding: 30px 20px;
             margin-bottom: 25px;
             text-align: center;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.25);
+            box-shadow: 0 0 18px rgba(255, 0, 0, 0.15);
         }
 
         .countdown-box h2 {
             color: #ff3333;
-            margin-top: 0;
+            margin-top: 10px;
+        }
+
+        .demo-label {
+            display: inline-block;
+            background-color: #333333;
+            color: #ffffff;
+            padding: 6px 12px;
+            border: 1px solid #777777;
+            font-size: 12px;
         }
 
         #countdown {
-            font-size: clamp(32px, 8vw, 56px);
-            font-family: monospace;
+            font-family: Consolas, monospace;
+            font-size: clamp(36px, 9vw, 60px);
             font-weight: bold;
             letter-spacing: 3px;
             margin: 20px 0;
         }
 
         .warning-text {
-            color: #ffcccc;
+            color: #dddddd;
             line-height: 1.8;
         }
 
-        .demo-label {
-            display: inline-block;
-            background-color: #333;
-            color: #fff;
-            padding: 5px 12px;
+        /* 架空ログパネル */
+        .log-box {
+            background-color: #101010;
+            border: 1px solid #555555;
             border-radius: 4px;
-            font-size: 13px;
-            margin-bottom: 10px;
+            margin-bottom: 25px;
+            overflow: hidden;
         }
 
-        /* 通常のコンテンツ */
+        .log-header {
+            background-color: #222222;
+            color: #ff5555;
+            padding: 12px 16px;
+            border-bottom: 1px solid #555555;
+            font-weight: bold;
+        }
+
+        .log-notice {
+            color: #bbbbbb;
+            font-size: 12px;
+            line-height: 1.6;
+            padding: 8px 16px;
+            margin: 0;
+            border-bottom: 1px solid #333333;
+        }
+
+        #demo-log {
+            height: 220px;
+            overflow-y: auto;
+            padding: 12px 16px;
+            font-family: Consolas, monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+        }
+
+        .log-entry {
+            margin-bottom: 4px;
+        }
+
+        .log-time {
+            color: #888888;
+        }
+
+        .log-status {
+            color: #75d995;
+        }
+
+        .log-warning {
+            color: #ff6666;
+        }
+
+        /* 説明セクション */
         section.content-box {
-            background-color: white;
+            background-color: #181818;
+            color: #eeeeee;
             padding: 25px;
             margin-bottom: 25px;
-            border-left: 5px solid #cc0000;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #cc0000;
+            border-radius: 4px;
         }
 
-        section h2 {
-            color: #990000;
+        section.content-box h2 {
+            color: #ff4444;
             margin-top: 0;
         }
 
@@ -111,10 +179,11 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background-color: #222;
-            color: white;
+            background-color: #111111;
+            color: #eeeeee;
             text-align: center;
             padding: 12px 10px;
+            border-top: 2px solid #990000;
             z-index: 1000;
         }
 
@@ -124,7 +193,7 @@
         }
 
         footer a {
-            color: #ffaaaa;
+            color: #ff7777;
             text-decoration: none;
             margin: 0 8px;
         }
@@ -136,8 +205,18 @@
 
         /* スマートフォン対応 */
         @media (max-width: 600px) {
-            header h1 {
-                font-size: 21px;
+            body {
+                padding-bottom: 160px;
+            }
+
+            header {
+                padding: 24px 12px;
+            }
+
+            header img {
+                max-width: 42%;
+                max-height: 150px;
+                margin: 15px 4px 0;
             }
 
             main {
@@ -153,8 +232,21 @@
                 padding: 18px;
             }
 
+            #demo-log {
+                height: 180px;
+                font-size: 11px;
+                padding: 10px;
+            }
+
             footer p {
                 font-size: 11px;
+            }
+        }
+
+        /* 動きを減らす設定への対応 */
+        @media (prefers-reduced-motion: reduce) {
+            header {
+                animation: none;
             }
         }
     </style>
@@ -164,49 +256,88 @@
 
     <!-- 警告ヘッダー -->
     <header>
-        <h1>⚠ 警告：あなたのファイルデータがすべて暗号化されました</h1>
-         <img src="https://github.com/it262211-blip/test01/blob/main/cupcake.jpg?raw=true" alt="サンプル">
+        <h1>⚠ セキュリティ警告 ⚠</h1>
+        <p>ランサムウェア風セキュリティデモ</p>
+
+        <img
+            src="https://github.com/it262211-blip/test01/blob/main/cupcake.jpg?raw=true"
+            alt="デモ用画像1"
+        >
+
+        <img
+            src="https://github.com/it262211-blip/test01/blob/main/rock.png?raw=true"
+            alt="デモ用画像2"
+        >
     </header>
 
-    <!-- メインコンテンツ -->
     <main>
 
-        <!-- カウントダウン表示 -->
+        <!-- カウントダウン -->
         <section class="countdown-box">
-            <span class="demo-label">演出用デモ</span>
+            <span class="demo-label">演出用デモ・実際の被害はありません</span>
 
-            <h2>⚠ セキュリティ警告 ⚠</h2>
+            <h2>ファイルの状態に関する警告</h2>
 
             <p class="warning-text">
-                これはランサムウェアを模した演出用画面です。<br>
+                この画面はランサムウェア風のデザインを再現したものです。<br>
                 実際のファイルは暗号化・削除されていません。
             </p>
 
-            <p>デモ終了までの残り時間</p>
+            <p class="warning-text">
+                <strong>デモ終了までの残り時間</strong>
+            </p>
 
             <div id="countdown">48:00:00</div>
 
-            <p class="warning-text" id="timer-message"
-               aria-live="polite">
-                カウントダウンが進行中です。
+            <p class="warning-text" id="timer-message" aria-live="polite">
+                デモ用カウントダウンが進行中です。
             </p>
         </section>
 
-        <!-- 1つ目の見出し -->
+        <!-- 架空ログ -->
+        <section class="log-box">
+            <div class="log-header">
+                ▶ システムイベントログ
+            </div>
+
+            <p class="log-notice">
+                ※ デモ用の架空ログです。実際のファイル操作・通信は行いません。
+            </p>
+
+            <div
+                id="demo-log"
+                role="log"
+                aria-live="off"
+                aria-label="デモ用の架空イベントログ"
+            ></div>
+        </section>
+
+        <!-- 説明セクション1 -->
         <section class="content-box">
-            <h2>おかねちょーだい</h2>
+            <h2>ファイルに何が起きたのか？</h2>
+
             <p>
-                このページは、セキュリティ警告画面のデザインや
-                カウントダウン機能を確認するためのデモです。
+                このページは、ランサムウェア風の警告画面を
+                Webデザインの学習目的で再現したものです。
+            </p>
+
+            <p>
+                ファイルへのアクセス、変更、暗号化は行いません。
             </p>
         </section>
 
-        <!-- 2つ目の見出し -->
+        <!-- 説明セクション2 -->
         <section class="content-box">
-            <h2>お知らせ</h2>
+            <h2>セキュリティに関するお知らせ</h2>
+
             <p>
-                このページは表示上の演出のみを行います。
-                個人情報の送信やファイルへのアクセスは行いません。
+                このデモは個人情報を収集せず、
+                外部へのデータ送信や支払い要求も行いません。
+            </p>
+
+            <p>
+                カウントダウンとログは視覚的な演出です。
+                ページを再読み込みすると48時間から再開します。
             </p>
         </section>
 
@@ -227,17 +358,18 @@
                target="_blank" rel="noopener noreferrer">X</a>
         </p>
 
-        <p>&copy; 2026 Security Demo</p>
+        <p>&copy; 2026 セキュリティデモ</p>
     </footer>
 
-    <!-- 48時間カウントダウン -->
     <script>
-        // デモ開始から48時間
+        // 48時間のデモ用カウントダウン
         const duration = 48 * 60 * 60;
         const endTime = Date.now() + duration * 1000;
 
         const countdown = document.getElementById("countdown");
         const message = document.getElementById("timer-message");
+
+        let timer;
 
         function updateCountdown() {
             const remaining = Math.max(
@@ -261,10 +393,61 @@
         }
 
         updateCountdown();
+        timer = setInterval(updateCountdown, 250);
 
-        const timer = setInterval(updateCountdown, 250);
+        // 表示専用の架空ログ
+        const demoLog = document.getElementById("demo-log");
+
+        const fakeEvents = [
+            ["デモ画面を初期化しました", "status"],
+            ["警告UIを表示しました", "status"],
+            ["カウントダウン表示を開始しました", "status"],
+            ["ファイル操作：実行していません", "warning"],
+            ["ファイル暗号化：実行していません", "warning"],
+            ["外部通信：実行していません", "warning"],
+            ["個人情報の収集：行っていません", "status"],
+            ["デモ用イベントの表示を継続中", "status"]
+        ];
+
+        let logIndex = 0;
+
+        function addDemoLog() {
+            const now = new Date();
+            const time = now.toLocaleTimeString("ja-JP", {
+                hour12: false
+            });
+
+            const event = fakeEvents[logIndex % fakeEvents.length];
+
+            const line = document.createElement("div");
+            line.className = "log-entry";
+
+            const timestamp = document.createElement("span");
+            timestamp.className = "log-time";
+            timestamp.textContent = "[" + time + "] ";
+
+            const message = document.createElement("span");
+            message.className =
+                event[1] === "warning"
+                    ? "log-warning"
+                    : "log-status";
+            message.textContent = event[0];
+
+            line.append(timestamp, message);
+            demoLog.appendChild(line);
+
+            // 最新30件だけを表示
+            while (demoLog.children.length > 30) {
+                demoLog.removeChild(demoLog.firstElementChild);
+            }
+
+            demoLog.scrollTop = demoLog.scrollHeight;
+            logIndex++;
+        }
+
+        addDemoLog();
+        setInterval(addDemoLog, 3000);
     </script>
 
 </body>
 </html>
-```
