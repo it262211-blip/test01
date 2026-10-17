@@ -1,0 +1,269 @@
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>セキュリティ警告 - デモ</title>
+
+    <style>
+        /* ページ全体 */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding-bottom: 140px;
+            font-family: Arial, "Meiryo", sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        /* 警告ヘッダー */
+        header {
+            background-color: #cc0000;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+            animation: warningBlink 2s infinite;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        @keyframes warningBlink {
+            0%, 100% {
+                background-color: #cc0000;
+            }
+            50% {
+                background-color: #660000;
+            }
+        }
+
+        /* メインコンテンツ */
+        main {
+            max-width: 900px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        /* カウントダウン */
+        .countdown-box {
+            background-color: #111;
+            color: #ff3333;
+            border: 3px solid #ff0000;
+            border-radius: 10px;
+            padding: 30px 20px;
+            margin-bottom: 25px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.25);
+        }
+
+        .countdown-box h2 {
+            color: #ff3333;
+            margin-top: 0;
+        }
+
+        #countdown {
+            font-size: clamp(32px, 8vw, 56px);
+            font-family: monospace;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin: 20px 0;
+        }
+
+        .warning-text {
+            color: #ffcccc;
+            line-height: 1.8;
+        }
+
+        .demo-label {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        /* 通常のコンテンツ */
+        section.content-box {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 5px solid #cc0000;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        section h2 {
+            color: #990000;
+            margin-top: 0;
+        }
+
+        /* フッター */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 12px 10px;
+            z-index: 1000;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: #ffaaaa;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* スマートフォン対応 */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 21px;
+            }
+
+            main {
+                margin: 20px auto;
+                padding: 0 12px;
+            }
+
+            .countdown-box {
+                padding: 22px 12px;
+            }
+
+            section.content-box {
+                padding: 18px;
+            }
+
+            footer p {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 警告ヘッダー -->
+    <header>
+        <h1>⚠ 警告：あなたのファイルデータがすべて暗号化されました</h1>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main>
+
+        <!-- カウントダウン表示 -->
+        <section class="countdown-box">
+            <span class="demo-label">演出用デモ</span>
+
+            <h2>⚠ セキュリティ警告 ⚠</h2>
+
+            <p class="warning-text">
+                これはランサムウェアを模した演出用画面です。<br>
+                実際のファイルは暗号化・削除されていません。
+            </p>
+
+            <p>デモ終了までの残り時間</p>
+
+            <div id="countdown">48:00:00</div>
+
+            <p class="warning-text" id="timer-message"
+               aria-live="polite">
+                カウントダウンが進行中です。
+            </p>
+        </section>
+
+        <!-- 1つ目の見出し -->
+        <section class="content-box">
+            <h2>おかねちょーだい</h2>
+            <p>
+                このページは、セキュリティ警告画面のデザインや
+                カウントダウン機能を確認するためのデモです。
+            </p>
+        </section>
+
+        <!-- 2つ目の見出し -->
+        <section class="content-box">
+            <h2>お知らせ</h2>
+            <p>
+                このページは表示上の演出のみを行います。
+                個人情報の送信やファイルへのアクセスは行いません。
+            </p>
+        </section>
+
+    </main>
+
+    <!-- フッター -->
+    <footer>
+        <p>お問い合わせ：info@example.com</p>
+
+        <p>
+            <a href="https://www.instagram.com/"
+               target="_blank" rel="noopener noreferrer">Instagram</a>
+            |
+            <a href="https://www.facebook.com/"
+               target="_blank" rel="noopener noreferrer">Facebook</a>
+            |
+            <a href="https://x.com/"
+               target="_blank" rel="noopener noreferrer">X</a>
+        </p>
+
+        <p>&copy; 2026 Security Demo</p>
+    </footer>
+
+    <!-- 48時間カウントダウン -->
+    <script>
+        // デモ開始から48時間
+        const duration = 48 * 60 * 60;
+        const endTime = Date.now() + duration * 1000;
+
+        const countdown = document.getElementById("countdown");
+        const message = document.getElementById("timer-message");
+
+        function updateCountdown() {
+            const remaining = Math.max(
+                0,
+                Math.ceil((endTime - Date.now()) / 1000)
+            );
+
+            const hours = Math.floor(remaining / 3600);
+            const minutes = Math.floor((remaining % 3600) / 60);
+            const seconds = remaining % 60;
+
+            countdown.textContent =
+                String(hours).padStart(2, "0") + ":" +
+                String(minutes).padStart(2, "0") + ":" +
+                String(seconds).padStart(2, "0");
+
+            if (remaining === 0) {
+                message.textContent = "デモ終了";
+                clearInterval(timer);
+            }
+        }
+
+        updateCountdown();
+
+        const timer = setInterval(updateCountdown, 250);
+    </script>
+
+</body>
+</html>
+```
